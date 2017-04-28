@@ -1,0 +1,52 @@
+LeAPPsa
+
+1.Proiectul
+	Se doreste dezoltarea unei aplicatii Web care sa permita crearea de conturi de utilizator doar pe baza unei adrese de e-mail (de exemplu, apartinand domeniului ‘info.uaic.ro’) pentru a facilita circularea unei intrebari (sau barfe) printer colegi. Un utilizator autentificat poate plasa o intrebare si maxim N nume de conturi ale unor colegi. Acestia vor primi un mesaj cu un URL generat (avand un identificator unic) unde pot raspunde la intrebare si adauga la randul lor pana la alte N conturi care vor primi mesaj de notificare. Atentie : un cooleg poate rasppunde o singura data la o intrebare. Sistemul implementat va afisa cat mai atractiv “arborele lepsii” pentru o anumite intrebare si va genera statistici privind cea mai populara intrebare, cel mai popular coleg etc.
+
+2.Membrii echipei
+- Jitariuc Sebastian Andrei (IIA6)
+- Minea Vlad Constantin (IIA6)
+3.Tehnologii utilizate
+	Aplicatia va folosi PHP ca limbaj de programare pentru partea de backend. Pentru partea de baze de date se va folosi Oracle SQL (interogari, inserari, stergeri, actualizari, triggere, proceduri, exceptii). Pentru partea de frontend se va folosi HTML, CSS, si javascript unde este cazul.
+
+4.Baza de date
+Users
+-unique_user : VARCHAR(25) [PK]
+-username : VARCHAR(30) [UNIQUE]
+-email : VARCHAR(50) [UNIQUE]
+-password : VARCHAR(32)
+-rights : BOOLEAN
+
+Questions
+-unique_question : VARCHAR(25) [PK]
+-question : VARCHAR(255)
+-date : DATE
+-max_invites : INTEGER
+-expires : DATE
+-unique_user : VARCHAR(25) [FK]
+
+Answers
+-unique_answer : VARCHAR(25) [PK]
+-answer : VARCHAR(255)
+-date : DATE
+-unique_user : VARCHAR(25) [FK]
+-unique_question : VARCHAR(25) [FK]
+-unique_parent : VARCHAR(25)
+
+Messages
+-unique_message : VARCHAR(25) [PK]
+-title : VARCHAR(20)
+-message : VARCHAR(255)
+-date : DATE
+-unique_user_from : VARCHAR(25) [FK]
+-unique_user_to : VARCHAR(25) [FK]
+
+5.Task-uri
+
+6.Idei/Propuneri
+- Login cu Facebook
+- Sistem de referali
+- Sistem de mesaje
+- Sistem de follow
+- Cautare dupa taguri/keywords
+- Sistem de report
