@@ -13,6 +13,9 @@
             <img src="img/default.png" alt="" width="100" style="border-radius:50%;margin-left:35px;border:1px solid #323232">
             <div style="border:1px solid #323232; margin:5px;min-height:100px;">
               STATISTICI
+              <p>combo <br />
+               longest streak <br />
+                most answered question</p>
             </div>
           </div>
           <div style="width:370px;margin:2px;float:left;">
