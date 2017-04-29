@@ -14,6 +14,6 @@ require_once("./inc/header.php");
         </div>
 
 </div>
-<?
+<?php
 require_once("./inc/footer.php");
 ?>
