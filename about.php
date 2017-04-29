@@ -1,5 +1,5 @@
 <?php
-require_once("/inc/header.php");
+require_once("./inc/header.php");
 ?>
 
     <div id="site_content">
@@ -15,5 +15,5 @@ require_once("/inc/header.php");
         </div>
     </div>
 <?php
-require_once("inc/footer.php");
+require_once("./inc/footer.php");
 ?>
