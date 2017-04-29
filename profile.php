@@ -25,6 +25,9 @@
             Email : <strong><u>popescu.ion@ionescu.com</u></strong><br/>
           </div>
           <div style="width:270px;margin:2px;float:left;">
+              <form action="editprofile.php">
+                                <input type="submit" value="Edit Profile" style="width:150px" />
+                 </form>
           </div>      
         </div>
       </div>

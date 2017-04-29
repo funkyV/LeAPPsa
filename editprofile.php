@@ -15,7 +15,7 @@
           <div style="width:370px;margin:2px;float:left;">
             <form action="methods/update_process.php" method="post" style="width:300px;margin:0 auto;" enctype="multipart/form-data"> 
               <label for="username">Username:</label>
-              <input type="text" id="username" name="username">">
+              <input type="text" id="username" name="username">
               <br/>
               <label for="nume">Nume:</label>
               <input type="text" id="nume" name="nume">
