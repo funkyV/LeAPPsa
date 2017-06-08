@@ -14,7 +14,7 @@ Pentru a crea un branch, folositi urmatoarele comenzi
     ~ $ git checkout -b 'nume branch'
 ````
 
-## Branch-ul Feature
+### Branch-ul Feature
 
 Fiecare branch feature va contine cod pentru una sau mai multe functionalitati. Numele unui branch feature trebuie
 respecte urmatorul format de nume feature/'nume branch', unde 'nume branch' este un nume sugestiv.
@@ -37,7 +37,7 @@ Pentru a face commit se folosesc urmatoarele comenzi
     ~ $ git add . (aceasta adauga tot)
     
     ~ $ git commit -m "Mesajul sugestiv"
-    
+
     ~ $ # Pentru branch-ul feature/login
     ~ $ git push origin feature/login
 ````
@@ -63,5 +63,16 @@ Exemplu de merge intre un branch feature(ex. feature/login) si branch-ul develop
     ~ $ # (acum nu vor mai exista conflicte)
 ````
 
+## Pull request-ul
 
+Dupa ce ai terminat de lucrat la o mare parte din branch-ul tau, te rog sa creezi un pull request.
+Poti face asta accesand pagina [LeAPPsa](https://github.com/funkyV/LeAPPsa/).
+Aici trebuie sa iti selectezi branch-ul din drop-down-ul branches.
+Dupa ce ai selectat branch-ul, apesi butonul "New pull request".
+Scrii un mesaj frumos, ai grija ca base-ul sa fie
+````    * master, daca la pasul anterior ai selectat development (vezi compare)
+        sau
+        * development, daca ai selectat un branch de tip feature (vezi compare)
+````
 
+### Mult spor si doamne ajuta!
