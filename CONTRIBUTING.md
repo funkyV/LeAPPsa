@@ -66,13 +66,16 @@ Exemplu de merge intre un branch feature(ex. feature/login) si branch-ul develop
 ## Pull request-ul
 
 Dupa ce ai terminat de lucrat la o mare parte din branch-ul tau, te rog sa creezi un pull request.
-Poti face asta accesand pagina [LeAPPsa](https://github.com/funkyV/LeAPPsa/).
-Aici trebuie sa iti selectezi branch-ul din drop-down-ul branches.
-Dupa ce ai selectat branch-ul, apesi butonul "New pull request".
-Scrii un mesaj frumos, ai grija ca base-ul sa fie
-````    * master, daca la pasul anterior ai selectat development (vezi compare)
+Poti face asta urmand urmatorii pasi:
+1. Accesezi pagina [LeAPPsa](https://github.com/funkyV/LeAPPsa/).
+2. Aici trebuie sa iti selectezi branch-ul din drop-down-ul branches.
+3. Dupa ce ai selectat branch-ul, apesi butonul "New pull request".
+4. Scrii un mesaj frumos, ai grija ca base-ul sa fie
+````   
+        * master, daca la pasul anterior ai selectat development (vezi compare)
         sau
         * development, daca ai selectat un branch de tip feature (vezi compare)
 ````
+5. Apesi butonul "Create pull request"
 
 ### Mult spor si doamne ajuta!
