@@ -1,8 +1,8 @@
-#Cum sa contribui
+# Cum sa contribui
 
 Repository-ul va contine branch-urile master(gata de productie), development(in curs de dezvoltare) si branch-uri tipul feature. Pentru a aduce adaugiri proiectului trebuie sa creati un nou branch din cel cu numele developement.
 
-##Feature
+## Feature
 
 Fiecare branch feature va contine cod pentru una sau mai multe functionalitati. Numele unui branch feature trebuie sa respecte urmatorul format de nume feature/<nume branch>, unde <nume branch> este un nume sugestiv.
 De exemplu:
