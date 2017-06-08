@@ -35,7 +35,9 @@ Pentru a face commit se folosesc urmatoarele comenzi
     ~ $ git add 'nume fisier'
         sau
     ~ $ git add . (aceasta adauga tot)
+    
     ~ $ git commit -m "Mesajul sugestiv"
+    
     ~ $ # Pentru branch-ul feature/login
     ~ $ git push origin feature/login
 ````
@@ -47,10 +49,12 @@ Exemplu de merge intre un branch feature(ex. feature/login) si branch-ul develop
 ````
     ~ $ # Ne mutam pe branch-ul `feature/login`
     ~ $ git checkout feature/login
+
     ~ $ # Pe branch-ul feature/login, facem merge cu development
     ~ $ # (adica codul de pe branch-ul development il aducem pe branch-ul feature/login)
     ~ $ git merge development
     ~ $ # (se rezolva conflictele merge-ului, daca exista)
+
     ~ $ # Ne mutam pe branch-ul development
     ~ $ git checkout development
 
