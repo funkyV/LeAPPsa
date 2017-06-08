@@ -1,6 +1,6 @@
 # Cum sa contribui
 
-Repository-ul va contine branch-urile master(gata de productie), development(in curs de dezvoltare) si branch-uri tipul feature. Pentru a aduce adaugiri proiectului trebuie sa creati un nou branch din cel cu numele developement.
+Repository-ul va contine branch-urile master(gata de productie), development(in curs de dezvoltare, urmatoarea versiune pentru productie) si branch-uri tipul feature. Pentru a aduce adaugiri proiectului trebuie sa creati un nou branch din cel cu numele developement.
 
 ## Feature
 
