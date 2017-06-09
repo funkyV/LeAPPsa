@@ -12,8 +12,37 @@ class Application{
             require APP . 'controllers/home.php';
             $page = new Home();
             $page->index();
-        } else{
-            require APP . 'views/index.php';
+        } elseif (file_exists(APP . 'controllers/' . $this->url_controller . '.php')) {
+
+            require APP . 'controllers/' . $this->url_controller . '.php';
+
+            $this->url_controller = new $this->url_controller();
+            if (method_exists($this->url_controller, $this->url_action)) {
+                if(!empty($this->url_params)) {
+                    call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
+                } else {
+                    $this->url_controller->{$this->url_action}();
+                }
+            } else {
+                if(strlen($this->url_action) == 0) {
+                    $this->url_controller->index();
+                }
+                else {
+                    echo "1"; //testez sa vad pe ce ramura if se duce in functie de parametri
+                    die();
+                    exit;
+                    require APP . 'controllers/error.php';
+                    $page = new Errur();
+                    $page->index();
+                }
+            }
+        } else {
+            echo $this->url_controller. ' / ' . "2";//testez sa vad pe ce ramura if se duce in functie de parametri
+                    die();
+                    exit;
+            require APP . 'controllers/error.php';
+            $page = new Errur();
+            $page->index();
         }
     }
     private function getUrlWithoutModRewrite()
@@ -30,7 +59,8 @@ class Application{
         unset($url[0], $url[1]);
         $this->url_params = array_values($url);
 
-        // echo 'Controller: ' . $this->url_controller . '<br>';
-
+        echo 'Controller: ' . $this->url_controller . '<br>';
+        echo 'Action: ' . $this->url_action . '<br>';
+        echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
     }
 }
