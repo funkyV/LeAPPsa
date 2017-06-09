@@ -1,6 +1,3 @@
-<?php
-  require_once("./inc/header.php");
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,6 +28,3 @@
       </div>
     </body>
 </html>
-<?
-  require_once("./inc/footer.php");
-?>

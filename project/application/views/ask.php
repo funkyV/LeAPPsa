@@ -1,6 +1,3 @@
-<?php
-require_once("./inc/header.php");
-?>
 <div id="site_content">
 
         <div id="content">
@@ -12,8 +9,4 @@ require_once("./inc/header.php");
                 <input type="submit" value="Start Leapsa" style="width:150px">
          </form>
         </div>
-
 </div>
-<?php
-require_once("./inc/footer.php");
-?>
