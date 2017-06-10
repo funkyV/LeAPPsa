@@ -16,7 +16,7 @@ if (defined('URL_SUB_FOLDER')) {
 }
 
 define('DB_TYPE', 'mysql');
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', 'localhost');
 define('DB_NAME', 'leappsa');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
