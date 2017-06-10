@@ -28,7 +28,7 @@ class Application{
                     $this->url_controller->index();
                 }
                 else {
-                    echo "1"; //testez sa vad pe ce ramura if se duce in functie de parametri
+                    echo "5"; //testez sa vad pe ce ramura if se duce in functie de parametri
                     die();
                     exit;
                     require APP . 'controllers/error.php';
@@ -59,8 +59,8 @@ class Application{
         unset($url[0], $url[1]);
         $this->url_params = array_values($url);
 
-        echo 'Controller: ' . $this->url_controller . '<br>';
-        echo 'Action: ' . $this->url_action . '<br>';
-        echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+        // echo 'Controller: ' . $this->url_controller . '<br>';
+        // echo 'Action: ' . $this->url_action . '<br>';
+        // echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
     }
 }
