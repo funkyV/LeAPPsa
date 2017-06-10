@@ -17,10 +17,10 @@
       </div>
       <div id="menubar">
         <ul id="menu">
-          <li class="selected"><a href="index.php">Home</a></li>
-          <li class="selected"><a href="about.php">About</a></li>
+          <li class="selected"><a href="home">Home</a></li>
+          <li class="selected"><a href="about">About</a></li>
           <li class="selected"><a href="profile.php">Profile</a></li>
-          <li class="selected"><a href="ask.php">Ask</a></li>
+          <li class="selected"><a href="ask">Ask</a></li>
           <li class="selected"><a href="index.php">Statistics</a></li>
           <li class="selected"><a href="logout.php">Logout</a></li>
         </ul>
