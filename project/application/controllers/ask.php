@@ -74,7 +74,7 @@ class Ask extends Controller {
             foreach ($this->selectedEmails as $aSelectedEmail) {
                 $to = $aSelectedEmail;
                 $subject = 'Ai primit LeAPPsa!';
-                $questionUrl = 'http://' . $_SERVER["HTTP_HOST"] . '/question/' . $lastQuestionId;
+                $questionUrl = 'http://' . $_SERVER["HTTP_HOST"] . '/answerQuestion/' . $lastQuestionId;
                 $message = 'Ai primit leappsa de la ' . 'Mihai.' . "\r\n" . 'Raspunde-i accesand url-ul ' . $questionUrl;
                 $message = $message . "\r\n" . 'Nu uita ca o poti da si tu mai departe, prietenilor tai!';
                 $message = $message . "\r\n" . 'Bafta in viata, mei!';

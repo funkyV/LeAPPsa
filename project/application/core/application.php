@@ -8,9 +8,7 @@ class Application{
     public function __construct()
     {//testez rootarea
         $this->getUrlWithoutModRewrite();
-
 //        echo $this->url_controller;
-
         if (!$this->url_controller) {
             require APP . 'controllers/home.php';
             $page = new Home();
@@ -18,7 +16,6 @@ class Application{
         } elseif (file_exists(APP . 'controllers/' . $this->url_controller . '.php')) {
 
             require APP . 'controllers/' . $this->url_controller . '.php';
-
             $this->url_controller = new $this->url_controller();
             if (method_exists($this->url_controller, $this->url_action)) {
                 if(!empty($this->url_params)) {
