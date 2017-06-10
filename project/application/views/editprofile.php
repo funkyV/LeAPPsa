@@ -11,7 +11,7 @@
             <img src="img/default.png" alt="" width="100" style="border-radius:50%;margin-left:35px;border:1px solid #323232">
           </div>
           <div style="width:370px;margin:2px;float:left;">
-            <form action="methods/update_process.php" method="post" style="width:300px;margin:0 auto;" enctype="multipart/form-data"> 
+            <form action="editProfile/process" method="post" style="width:300px;margin:0 auto;" enctype="multipart/form-data"> 
               <label for="username">Username:</label>
               <input type="text" id="username" name="username">
               <br/>
