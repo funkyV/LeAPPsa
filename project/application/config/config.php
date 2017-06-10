@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 
 define('URL_PROTOCOL', 'http://');
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
-define('URL_SUB_FOLDER', 'leappsa');
+define('URL_SUB_FOLDER', 'project');
 define('URL_INDEX_FILE', 'index.php' . '/');
 
 if (defined('URL_SUB_FOLDER')) {
