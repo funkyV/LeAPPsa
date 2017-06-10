@@ -17,7 +17,7 @@ class Controller extends REST {
     public function loadModel()
     {
         //testing
-         require APP . '/model/model.php';
+        require APP . '/model/model.php';
         // creaza model si transmite conexiunea cu bd-u
         $this->model = new Model($this->db);
         
