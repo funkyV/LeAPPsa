@@ -8,6 +8,9 @@ class Application{
     public function __construct()
     {//testez rootarea
         $this->getUrlWithoutModRewrite();
+
+//        echo $this->url_controller;
+
         if (!$this->url_controller) {
             require APP . 'controllers/home.php';
             $page = new Home();
@@ -37,11 +40,11 @@ class Application{
                 }
             }
         } else {
-            echo $this->url_controller. ' / ' . "2";//testez sa vad pe ce ramura if se duce in functie de parametri
+//            echo $this->url_controller. ' / ' . "2";//testez sa vad pe ce ramura if se duce in functie de parametri
                     die();
                     exit;
             require APP . 'controllers/error.php';
-            $page = new Errur();
+            $page = new Errur(); //autism
             $page->index();
         }
     }
