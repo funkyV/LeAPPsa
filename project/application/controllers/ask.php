@@ -3,6 +3,8 @@
 
 class Ask extends Controller {
     public $emailList = null;
+    public $askedQuestion = null;
+    public $selectedEmails = null;
 
     public function __construct() {
         parent:: __construct();
@@ -36,9 +38,10 @@ class Ask extends Controller {
 
             $userId = $_SESSION['user_id'];
             $questionType = $_POST["question_types"];
-            $emails = $_POST["emails"];
+            $this->selectedEmails = $_POST["emails"];
 
-            $params =  array(':question' => $_POST["question"], ':user_id' => $userId, ':aDate' => date('Y-m-d H:i:s'));
+            $this->askedQuestion = $_POST["question"];
+            $params =  array(':question' => $this->askedQuestion, ':user_id' => $userId, ':aDate' => date('Y-m-d H:i:s'));
 
             $question = new Question($this->db);
             //add the question
@@ -46,7 +49,7 @@ class Ask extends Controller {
             $lastQuestionId = $this->db->lastInsertId();
 
             //get recipient ids
-            $sql = 'SELECT id FROM users WHERE email in '. $this->stringFromArray($emails);
+            $sql = 'SELECT id FROM users WHERE email in '. $this->stringFromArray($this->selectedEmails);
 
             $query = $this->db->prepare($sql);
             $query->execute($params);
@@ -64,9 +67,28 @@ class Ask extends Controller {
                 }
 
             }
-            
+
             $insertQuery = $this->db->prepare($insertSql);
             $insertQuery->execute();
+
+            foreach ($this->selectedEmails as $aSelectedEmail) {
+                $to = $aSelectedEmail;
+                $subject = 'Ai primit LeAPPsa!';
+                $questionUrl = 'http://' . $_SERVER["HTTP_HOST"] . '/question/' . $lastQuestionId;
+                $message = 'Ai primit leappsa de la ' . 'Mihai.' . "\r\n" . 'Raspunde-i accesand url-ul ' . $questionUrl;
+                $message = $message . "\r\n" . 'Nu uita ca o poti da si tu mai departe, prietenilor tai!';
+                $message = $message . "\r\n" . 'Bafta in viata, mei!';
+                $headers = 'From: no-reply@leappsa.info.uaic.ro' . "\r\n".
+                    'X-Mailer: PHP/' . phpversion();
+
+                mail($to, $subject, $message, $headers);
+            }
+
+
+
+            require HEADER;
+            require APP . '/views/askSuccess.php';
+            require FOOTER;
         }
     }
 
