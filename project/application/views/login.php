@@ -13,8 +13,8 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
             <br/>
-            <a href="register.php">Nu ai cont? Inregistreaza-te!</a><br/>
-            <a href="register.php">Ai uitat parola?</a>
+            <a href="register">Nu ai cont? Inregistreaza-te!</a><br/>
+            <a href="register">Ai uitat parola?</a>
             <input type="submit" value="Login">
           </form>
         </div>

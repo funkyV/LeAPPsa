@@ -33,8 +33,7 @@
                             <label>Ultimul raspuns : #438c</label>
                             <br/>
                             <br/>
-                            <form action="login.php">
-                                <input type="submit" value="Login" style="width:150px" />
+                            <a href="login"><input type="submit" value="Login"></a>
                             </form>
                         </div>
                     </div>
