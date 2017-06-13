@@ -34,10 +34,26 @@ class register extends Controller
             $error[] = "Password must be atleast 6 characters"; 
         }
         else{
-            //testing
-            echo $uname;
-            echo $umail;
-            echo $upass;
+            try{
+            $stmt = $this->db->prepare("SELECT username,email FROM users WHERE username=:uname OR email=:umail");
+            $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
+            $row=$stmt->fetch(PDO::FETCH_ASSOC);
+    
+            if($row['username']==$uname) {
+                echo "sorry username already taken !";
+            }
+            else if($row['email']==$umail) {
+                echo "sorry email id already taken !";
+            }
+            else{
+                if($this->user->register($fname,$lname,$uname,$umail,$upass)) {
+                    $this->user->redirect('login');
+                }
+            }
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
         }
         }
     }
