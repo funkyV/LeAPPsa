@@ -8,9 +8,18 @@ class login extends Controller
         require FOOTER;
     }
     public function process() {
-    //testing preluare date $_POST
-        echo $_POST["email"];
-        echo $_POST["password"];
-        //echo $_GET["nume_param"];
+        if(isset($_POST['login_submit']))
+        {
+            $uname = $_POST['username'];
+            $umail = $_POST['email'];
+            $upass = $_POST['password'];
+            
+            if($this->user->login($uname,$umail,$upass)){
+                $this->user->redirect('homeloged');
+            }
+            else{
+                echo "Wrong Details !";
+            } 
+        }
     }
 }
