@@ -1,5 +1,5 @@
 <?php
-
+include_once APP.'/libs/user.php';
 class Controller extends REST {
     public $db = null;
     public $model = null;
@@ -19,6 +19,7 @@ class Controller extends REST {
         //testing
          require APP . '/model/model.php';
         // creaza model si transmite conexiunea cu bd-u
+        $this->user = new USER($this->db);
         $this->model = new Model($this->db);
         
     }
