@@ -15,18 +15,19 @@
               <label for="username">Username:</label>
               <input type="text" id="username" name="username">
               <br/>
-              <label for="nume">Nume:</label>
-              <input type="text" id="nume" name="nume">
+              <label for="firstname">Firstname:</label>
+              <input type="text" id="firstname" name="firstname">
               <br/>
-              <label for="prenume">Prenume:</label>
-              <input type="text" id="prenume" name="prenume">
+              <label for="lastname">Lastname:</label>
+              <input type="text" id="lastname" name="lastname">
               <br/>
-              <label for="email">Email:</label><input type="email" id="email" name="email">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email">
               <br/>
               <label for="avatar">Avatar:</label>
               <input type="file" id="avatar" name="avatar">
               <br/>
-              <input type="submit" value="Update">
+              <input type="submit" name="edit_submit" value="Update">
             </form>
           </div>
           <div style="width:270px;margin:2px;float:left;">
