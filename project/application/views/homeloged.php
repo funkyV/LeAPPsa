@@ -1,7 +1,4 @@
 <!DOCTYPE HTML>
-<?php 
-require_once APP.'libs/user.php';
-?>
 <html>
 <head>
     <title>LeAPPsa</title>
