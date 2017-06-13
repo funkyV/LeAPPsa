@@ -18,6 +18,7 @@ class Controller extends REST {
     {
         //testing
         require APP . '/model/model.php';
+        $this->user = new USER($this->db);
         // creaza model si transmite conexiunea cu bd-u
         $this->model = new Model($this->db);
         

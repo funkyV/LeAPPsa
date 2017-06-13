@@ -22,7 +22,7 @@
                     <label for="repassword">Repeat Password:</label>
                     <input type="password" id="repassword" name="repassword">
                     <br/>
-                    <input type="submit" value="Register">
+                    <input type="submit" name="submit_register" value="Register">
                   </form>
         </div>
       </div>

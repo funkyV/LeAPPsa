@@ -8,11 +8,34 @@ class editProfile extends Controller
         require FOOTER;
     }
     public function process() {
-    //testing preluare date $_POST
-        echo $_POST["username"];
-        echo $_POST["nume"];
-        echo $_POST["prenume"];
-        echo $_POST["email"];
-        echo $_POST["avatar"];        
+    if(isset($_POST['edit_submit'])){
+        if(isset($_POST["username"])){
+            if($this->user->updateDetails($_SESSION['user_session'], 'username', $_POST["username"])){
+                $this->user->redirect(profil);
+            }
+        }
+        if(isset($_POST["firstname"])){
+            if($this->user->updateDetails($_SESSION['user_session'], 'firstname', $_POST["firstname"])){
+                $this->user->redirect(profil);
+            }
+        }
+        if(isset($_POST["lastname"])){
+            if($this->user->updateDetails($_SESSION['user_session'], 'lastname', $_POST["lastname"])){
+                $this->user->redirect(profil);
+            }
+        }
+        if(isset($_POST["email"])){
+            if($this->user->updateDetails($_SESSION['user_session'], 'email', $_POST["email"])){
+                $this->user->redirect(profil);
+            }
+        }      
+        if(isset($_POST["avatar"])){
+            if($this->user->updateDetails($_SESSION['user_session'], 'profile_pic', $_POST["avatar"])){
+                $this->user->redirect(profil);
+            }
+        }      
+    }else{
+        echo "Macar un camp este obligatoriu!";
+        }        
     }
 }
