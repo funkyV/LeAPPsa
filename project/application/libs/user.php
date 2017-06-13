@@ -43,6 +43,13 @@ class USER
       return false;
    }
 
+   public function logout()
+   {
+        session_destroy();
+        unset($_SESSION['user_session']);
+        return true;
+   }
+
    public function register($fname,$lname,$uname,$umail,$upass)
     {
        try
