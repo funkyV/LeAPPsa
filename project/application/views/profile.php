@@ -16,7 +16,7 @@
             </div>
           </div>
           <div style="width:370px;margin:2px;float:left;">
-            Username : <strong><u><?php echo ucfirst($this->user->getDetails($_SESSION['user_session'],'username'));?></u></strong><br/>
+            Username : <strong><u><?php echo $this->user->getDetails($_SESSION['user_session'],'username');?></u></strong><br/>
             Nume : <strong><u><?php echo ucfirst($this->user->getDetails($_SESSION['user_session'],'firstname'));?></u></strong><br/>
             Prenume : <strong><u><?php echo ucfirst($this->user->getDetails($_SESSION['user_session'],'lastname'));?></u></strong><br/>
             Email : <strong><u><?php echo $this->user->getDetails($_SESSION['user_session'],'email');?></u></strong><br/>
