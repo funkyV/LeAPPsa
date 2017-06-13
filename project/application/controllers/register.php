@@ -8,10 +8,14 @@ class register extends Controller
         require FOOTER;
     }
     public function process() {
-    if(isset($_POST['submit_register'])){
-        $uname = trim($_POST['username']);
-        $umail = trim($_POST['email']);
-        $upass = trim($_POST['password']); 
+        if($this->user->is_loggedin()!=""){
+           $this->user->redirect('home');
+    }
+
+        if(isset($_POST['submit_register'])){
+            $uname = trim($_POST['username']);
+            $umail = trim($_POST['email']);
+            $upass = trim($_POST['password']); 
  
         if($uname=="") {
             $error[] = "provide username !"; 
@@ -41,7 +45,8 @@ class register extends Controller
                 echo "sorry email id already taken !";
             }
             else{
-                //register(user);
+                if($this->user->register($fname,$lname,$uname,$umail,$upass)) {
+                    $this->user->redirect('login');
             }
             }
         }
