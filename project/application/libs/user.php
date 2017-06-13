@@ -16,7 +16,6 @@ class USER
           $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:uname OR email=:umail LIMIT 1");
           $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
           $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-          //var_dump(password_verify($upass, $userRow['password']));
           if($stmt->rowCount() > 0)
           {
              if(password_verify($upass, $userRow['password']))
@@ -49,7 +48,6 @@ class USER
        try
        {
            $new_password = password_hash($upass, PASSWORD_DEFAULT);
-           //echo "parola_hash: "$new_password;
            $stmt = $this->db->prepare("INSERT INTO users(username,email,password) 
                                                        VALUES(:uname, :umail, :upass)");
               
