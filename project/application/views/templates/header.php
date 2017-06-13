@@ -12,17 +12,27 @@
     <div id="header">
       <div id="logo">
         <div id="logo_text">
-          <h1><a href="/"><?php echo ucfirst(get_class($this)); ?></a></h1>
+          <h1><a href="/"><?php if (ucfirst(get_class($this))=="Homeloged"){
+                                    ?>LeAPPsa<?php
+                                }else
+                                  echo ucfirst(get_class($this));?></a></h1>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
-          <li class="selected"><a href="/home">Home</a></li>
-          <li class="selected"><a href="about">About</a></li>
-          <li class="selected"><a href="profile.php">Profile</a></li>
-          <li class="selected"><a href="/ask">Ask</a></li>
-          <li class="selected"><a href="index.php">Statistics</a></li>
-          <li class="selected"><a href="logout.php">Logout</a></li>
+          <?php
+          if($this->user->is_loggedin()!=""){?>
+            <li class="selected"><a href="homeloged">Home</a></li>
+            <li class="selected"><a href="about">About</a></li>
+            <li class="selected"><a href="profil">Profile</a></li>
+            <li class="selected"><a href="ask">Ask</a></li>
+            <li class="selected"><a href="index">Statistics</a></li>
+            <li class="selected"><a href="logout">Logout</a></li>
+          <?php
+         }else{?>
+         <li class="selected"><a href="home">Home</a></li>
+         <li class="selected"><a href="login">Login</a></li><?}?>
+          
         </ul>
       </div>
     </div>
