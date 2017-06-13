@@ -1,5 +1,5 @@
 <?php
-
+require APP.'libs/user.php';
 class Controller extends REST {
     public $db = null;
     public $model = null;

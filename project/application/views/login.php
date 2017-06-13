@@ -16,7 +16,7 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
             <br/>
-            <a href="register.php">Nu ai cont? Inregistreaza-te!</a><br/>
+            <a href="register">Nu ai cont? Inregistreaza-te!</a><br/>
             <input type="submit" name="login_submit" value="Login">
           </form>
         </div>

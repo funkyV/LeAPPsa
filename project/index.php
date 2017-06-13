@@ -10,4 +10,5 @@ require APP . '/core/application.php';
 require APP . '/core/rest.php';
 require APP . '/core/controller.php';
 
+session_start();
 $app = new Application();
