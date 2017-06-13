@@ -8,6 +8,9 @@ class login extends Controller
         require FOOTER;
     }
     public function process() {
+        if($this->user->is_loggedin()!=""){
+             $this->user->redirect('home');
+        }
         if(isset($_POST['login_submit']))
         {
             $uname = $_POST['username'];
