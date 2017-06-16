@@ -50,12 +50,13 @@ class USER
         return true;
    }
 
-   public function register($fname,$lname,$uname,$umail,$upass)
+   public function register($uname,$umail,$upass)
     {
        try
        {
            $new_password = password_hash($upass, PASSWORD_DEFAULT);
-           $stmt = $this->db->prepare("INSERT INTO users(username,email,password) 
+   
+           $stmt = $this->db->prepare("INSERT INTO users (username,email,password) 
                                                        VALUES(:uname, :umail, :upass)");
               
            $stmt->bindparam(":uname", $uname);
@@ -89,17 +90,184 @@ class USER
    }
 
    public function updateDetails($id, $detail, $value){
-        try
+                try{
+                    $sql = "UPDATE users SET ".$detail." = :value WHERE id = :id";
+                    $stmt = $this->db->prepare($sql);
+                    $stmt->execute(array(':id'=>$id, ':value'=>$value));
+                    return true;
+                }
+                catch(PDOException $e){
+                   echo $e->getMessage();
+                   return false;
+                }
+    }
+    //returneaza nr de randuri dintr-un tabel, acele randuri ce au id-ul = $id
+    public function getNumOfById($id, $tabel){
+    try
     {
-          $sql = "UPDATE users SET ".$detail." = :value WHERE id = :id";
-          $stmt = $this->db->prepare($sql);
-          $stmt->execute(array(':id'=>$id, ':value'=>$value));
-          return true;
+          $stmt = $this->db->prepare("SELECT * FROM ".$tabel." WHERE id = ".$id."");
+          $stmt->execute();
+          $stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $stmt->rowCount();
+          }
     }
        catch(PDOException $e)
        {
            echo $e->getMessage();
-           return false;
+       }
+   }
+   //returneaza numarul de randuri dintr-un tabel
+   public function getNumOf($tabel){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM ".$tabel."");
+          $stmt->execute();
+          $stmt->fetch(PDO::FETCH_ASSOC);
+           
+          if($stmt->rowCount() > 0)
+          {
+              return $stmt->rowCount();
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+   //returneaza ultima valoare adaugata intr-un tabel
+   public function lastEntry($field,$tabel){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM ".$tabel." ORDER BY id DESC LIMIT 1");
+          $stmt->execute();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $userRow[$field];
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+   //functia lastQuestion returneaza id-ul ultimei intebari adaugate 
+   public function lastQuestion(){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM questions  ORDER BY date DESC LIMIT 1");
+          $stmt->execute();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $userRow['id'];
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+
+   /*
+   *
+   *Functia mostPopularQuestion($detail) primeste ca parametru denumirea coloanei si returneaza valoarea acesteia,  
+   *corespunzatoare intrebarii cu cel mai mare numar de raspunsuri
+   *
+   */
+   public function mostPopularQuestion($detail){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM questions  ORDER BY answered DESC LIMIT 1");
+          $stmt->execute();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $userRow[$detail];
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+   /*
+   *
+   *Functia getDetailsByTable(id, coloana, tabel) primeste ca parametru id-ul, coloana(denumire), numele tabelului si returneaza 
+   *valoarea de pe coloana corespunzatoare id-ului
+   *
+   */
+   public function getDetailsByTable($id, $detail, $table){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM ".$table." WHERE id = ".$id." LIMIT 1");
+          $stmt->execute();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $userRow[$detail];
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+   /*
+   *
+   *Functia isAnswered([param]) primeste ca parametru id-ul intrebarii si ii mareste valoarea "answered" cu o unitate
+   *Returneaza True daca a reusit, False altfel.
+   *
+   */
+   public function isAnswered($id){
+       $value = getDetailsByTable($id, 'answered', 'questions');
+       $value++;
+                try{
+                    $sql = "UPDATE questions SET answered = ".$value." WHERE id = ".$id."";
+                    $stmt = $this->db->prepare($sql);
+                    $stmt->execute();
+                    return true;
+                }
+                catch(PDOException $e){
+                   echo $e->getMessage();
+                   return false;
+                }
+    }
+
+   public function whoRespond(){
+    $questionId = myQuestions();
+    try
+    {
+          $stmt = $this->db->prepare("SELECT question FROM questions WHERE id = ".$_SESSION[user_session]." ");
+          $stmt->execute();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $userRow[$detail];
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+
+   public function getAllDetailsByTable($id, $table){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM ".$table." WHERE id = ".$id." LIMIT 1");
+          $stmt->execute();
+          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          if($stmt->rowCount() > 0)
+          {
+              return $userRow[$detail];
+          }
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
        }
    }
 

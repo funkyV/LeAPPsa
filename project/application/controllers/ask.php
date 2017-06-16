@@ -34,9 +34,9 @@ class Ask extends Controller {
         } else {
 
             require APP . '/model/question.php';
-            $_SESSION['user_id'] = 12;
+            //$_SESSION['user_id'] = 12;
 
-            $userId = $_SESSION['user_id'];
+            $userId = $_SESSION['user_session'];
             $questionType = $_POST["question_types"];
             $this->selectedEmails = $_POST["emails"];
 

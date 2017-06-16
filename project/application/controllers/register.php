@@ -37,7 +37,7 @@ class register extends Controller
         else if(strlen($upass) < 6){
             $error[] = "Password must be atleast 6 characters"; 
         }
-        else if($reupass == $upass) {
+        else if(strcmp($reupass,$upass)) {
             $error[] = "password doesn't match !";
         }
         else{
@@ -46,14 +46,14 @@ class register extends Controller
             $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
             $row=$stmt->fetch(PDO::FETCH_ASSOC);
     
-            if($row['username']==$uname) {
-                echo "sorry username already taken !";
+            if(strcmp($row['username'],$uname)) {
+                print "sorry username already taken !";
             }
-            else if($row['email']==$umail) {
-                echo "sorry email id already taken !";
+            else if(strcmp($row['email'],$umail)) {
+                print "sorry email id already taken !";
             }
             else{
-                if($this->user->register($fname,$lname,$uname,$umail,$upass)) {
+                if($this->user->register($uname,$umail,$upass)) {
                     $this->user->redirect('login');
                 }
             }
