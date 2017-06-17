@@ -1,5 +1,4 @@
 <?php
-//require APP.'model/user.php';
 class Controller extends REST {
     public $db = null;
     public $model = null;
@@ -16,7 +15,6 @@ class Controller extends REST {
    
     public function loadModel()
     {
-        //testing
         require APP . '/model/model.php';
         require APP.'model/user.php';
         // creaza model si transmite conexiunea cu bd-u

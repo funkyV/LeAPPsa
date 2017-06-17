@@ -28,12 +28,7 @@ class editProfile extends Controller
             if($this->user->updateDetails($_SESSION['user_session'], 'email', $_POST["email"])){
                 $this->user->redirect(profil);
             }
-        }      
-        if(isset($_POST["avatar"])  && !empty($_POST["avatar"])){
-            if($this->user->updateDetails($_SESSION['user_session'], 'profile_pic', $_POST["avatar"])){
-                $this->user->redirect(profil);
-            }
-        }      
+        }    
     }else{
         echo "Macar un camp este obligatoriu!";
         }        

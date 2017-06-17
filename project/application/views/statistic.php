@@ -18,8 +18,6 @@
                         <br/>
                         <label>Intrebari : <?php echo $this->user->getNumOf('questions')?></label>
                         <br/>
-                        <label>Raspunsuri : <?php echo $this->user->getNumOf('answers')?></label>
-                        <br/>
                         <label>Ultimul membru inregistrat : <?php echo $this->user->lastEntry('username','users')?></label>
                         <br/>
                         <label>Ultima intrebare : #<?php echo $this->user->lastQuestion()?> : <?php echo $this->user->getDetailsByTable($this->user->lastQuestion(), 'question', 'questions')?></label>
@@ -32,9 +30,9 @@
                     <div style="width:500px;margin:2px;float:left;">
                         <div style="width:300px;margin:0 auto;">
                             <h3>Statisticile mele</h3>
-                            <label>Intrebari puse : <?php echo $this->user->lastEntry('username','users')?></label>
+                            <label>Intrebari puse : <?php echo $this->user->getUserNrQuestions($_SESSION['user_session'])?></label>
                             <br/>
-                            <label>Raspunsuri date : <?php echo $this->user->lastQuestion()?></label>
+                            <label>Raspunsuri date : <?php echo $this->user->getUserNrAnswers($_SESSION['user_session'])?></label>
                             <br/>
                             <br/>
                             

@@ -35,10 +35,10 @@ class USER extends Model{
 
 
 
-   public function login($uname,$umail,$upass){
+   public function login($umail,$upass){
        try{
-          $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:uname OR email=:umail LIMIT 1");
-          $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
+          $stmt = $this->db->prepare("SELECT * FROM users WHERE email=:umail LIMIT 1");
+          $stmt->execute(array(':umail'=>$umail));
           $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
           if($stmt->rowCount() > 0)
           {
@@ -102,10 +102,7 @@ class USER extends Model{
           $stmt = $this->db->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
           $stmt->execute(array(':id'=>$id));
           $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-          if($stmt->rowCount() > 0)
-          {
               return $userRow[$detail];
-          }
     }
        catch(PDOException $e)
        {
@@ -263,7 +260,7 @@ class USER extends Model{
    public function questionsSentToUser($userId){
     try
     {
-        $sql = ("select q.question, q.id , u.username from recipients r inner join questions q on r.question_id = q.id inner join users u on q.user_id = u.id where r.user_id = :id ");
+        $sql = ("select q.question, q.id , u.username from recipients r inner join questions q on r.question_id = q.id inner join users u on q.user_id = u.id where r.receiver_id = :id ");
           $querry = $this->db->prepare($sql);
           $querry->execute(array(':id'=>$userId));
           $dataRow = $querry->fetchAll();
@@ -276,6 +273,62 @@ class USER extends Model{
                 . htmlspecialchars($array['username']) . '</label> 
                 </tr> <label class="separator"></label>';
                 }        
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+
+   public function getUserNrQuestions($userId){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM questions WHERE user_id = ".$userId."");
+          $stmt->execute();
+         $stmt->fetch(PDO::FETCH_ASSOC);
+              return $stmt->rowCount();
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+
+   public function getUserNrAnswers($userId){
+    try
+    {
+          $stmt = $this->db->prepare("SELECT * FROM answers WHERE user_id = ".$userId."");
+          $stmt->execute();
+         $stmt->fetch(PDO::FETCH_ASSOC);
+              return $stmt->rowCount();
+    }
+       catch(PDOException $e)
+       {
+           echo $e->getMessage();
+       }
+   }
+
+
+   public function getNotification($userId){
+    try
+    {
+        $sql = ("select users.username as username, users.id as userId , recipients.question_id as qID from users join recipients on users.id = recipients.sender_id where recipients.receiver_id = :id");
+          $querry = $this->db->prepare($sql);
+          $querry->execute(array(':id'=>$userId));
+          $dataRow = $querry->fetchAll();
+          //var_dump($dataRow);
+          $array = get_object_vars($dataRow[0]);
+          //var_dump($array);
+          for( $i=0;$i<sizeof($dataRow);$i++) {
+            $array = get_object_vars($dataRow[$i]);
+                echo '</tr>
+                <h4>Esti invitat sa raspunzi la <a href="/answeredQuestion/id/'
+                . htmlspecialchars($array['userId']) . '">aceasta</a> 
+                intrebare de catre <a href="/senderProfile/id/'
+                . htmlspecialchars($array['userId']) . '"> '
+                . htmlspecialchars($array['username']) . '</a> !</h4> 
+                </tr> <label class="separator"></label>';
+            }        
     }
        catch(PDOException $e)
        {
