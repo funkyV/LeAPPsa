@@ -7,8 +7,4 @@ class statistic extends Controller
         require APP . '/views/statistic.php';
         require FOOTER;
     }
-    
-    public function process(){
-        
-    }
 }

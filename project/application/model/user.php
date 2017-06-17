@@ -259,16 +259,22 @@ class USER extends Model{
                 }
     }
 
-   public function getAllDetailsByTable($id){
+   public function questionsSentToUser($userId){
     try
     {
         $sql = ("select q.question, q.id , u.username from recipients r inner join questions q on r.question_id = q.id inner join users u on q.user_id = u.id where r.user_id = :id ");
           $querry = $this->db->prepare($sql);
-          $querry->execute(array(':id'=>$id));
-          $dataRow = $querry->fetchAll(PDO::FETCH_ASSOC);
-          
-              return $dataRow;
-          
+          $querry->execute(array(':id'=>$userId));
+          $dataRow = $querry->fetchAll();
+          $array = get_object_vars($dataRow[0]);
+          for( $i=0;$i<sizeof($dataRow);$i++) {
+            $array = get_object_vars($dataRow[$i]);
+                echo '</tr>
+                <h4>' . htmlspecialchars($array['question']) .
+                '</h4> <label class="user-started" id="user">adresata de catre '
+                . htmlspecialchars($array['username']) . '</label> 
+                </tr> <label class="separator"></label>';
+                }        
     }
        catch(PDOException $e)
        {
