@@ -2,13 +2,14 @@
 
 
 class Ask extends Controller {
-    public $emailList = null;
+    public $emailAndUsernameList = null;
     public $askedQuestion = null;
     public $selectedEmails = null;
 
     public function __construct() {
         parent:: __construct();
-        $this->emailList = $this->getEmails();
+        $this->emailAndUsernameList = $this->getEmailsAndUsernames();
+//        var_dump($this->emailAndUsernameList);
     }
 
     public function index() {
@@ -17,16 +18,10 @@ class Ask extends Controller {
         require FOOTER;
     }
 
-    public function getEmails() {
-//        $sql = "SELECT email FROM users";
-//
-//        $query = $this->db->prepare($sql);
-//        $query->execute();
-//
-//        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    public function getEmailsAndUsernames() {
         $user = new USER($this->db);
 
-        return $user->getUserEmails();
+        return $user->getUserEmailsAndUsernames();
     }
 
     public function askQuestion()
@@ -36,10 +31,9 @@ class Ask extends Controller {
         } else {
             require APP . '/model/question.php';
 
-
             //prepare question parameters
             $userId = $_SESSION['user_session'];
-            $questionType = $_POST["question_types"];
+//            $questionType = $_POST["question_types"];
             $this->selectedEmails = $_POST["emails"];
             $this->askedQuestion = $_POST["question"];
             $params = array(':question' => $this->askedQuestion, ':user_id' => $userId, ':aDate' => date('Y-m-d H:i:s'));
