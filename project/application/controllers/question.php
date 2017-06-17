@@ -6,10 +6,10 @@
  * Time: 15:30
  */
 
-class Answerquestion extends Controller {
+class Question extends Controller {
     public function index() {
         require HEADER;
-        require APP . '/views/answer.php';
+        require APP . '/views/question.php';
         require FOOTER;
     }
 
