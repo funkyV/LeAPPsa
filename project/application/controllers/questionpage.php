@@ -11,6 +11,9 @@ class QuestionPage extends Controller {
     public $question = null;
     public $senderName = null;
     public $didAnswerQuestion = null;
+    public $treeData = null;
+
+
 //    function __construct() {
 //        parent::__construct();
 //        $this->question = "dsa";
@@ -66,6 +69,34 @@ class QuestionPage extends Controller {
         require APP . '/model/question.php';
         $questionModel = new Question($this->db);
         $this->question = $questionModel->getQuestion($id)[0];
+    }
+
+    public function showTree($questionId) {
+        $sql = "select sender_id as parent, id as child, depth
+                from users 
+                JOIN (
+                        select sender_id, receiver_id, depth, question_id
+                        from recipients
+                        where depth > 0
+                    ) as stm
+                on users.id = stm.receiver_id
+                where question_id = " . $questionId;
+        $sql = $sql . " order by depth";
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        $this->treeData = $query->fetchAll(PDO::FETCH_ASSOC);
+
+//        echo '<pre>' . var_export($treeData, true) . '</pre>';
+//        var_dump();
+//        foreach ($this->treeData as $aNode) {
+//            echo '<pre>' . var_export($aNode, true) . '</pre>';
+//        }
+
+//        require HEADER;
+        require APP . '/views/tree.php';
+//        require
     }
 
 
