@@ -54,6 +54,7 @@ class Ask extends Controller {
             $recipients= $userModel->getQuestionRecipientsForEmails($this->stringFromArray($this->selectedEmails));
 
             //insert recipients
+
             require APP . '/model/recipient.php';
             $recipientModel = new Recipient($this->db);
             $recipientModel->insertRecipients($recipients, $lastQuestionId);
