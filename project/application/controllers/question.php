@@ -14,7 +14,7 @@ class Question extends Controller {
     }
 
     public function id($questionId) {
-        $sql = 'S'
+        var_dump($questionId);
     }
 
 
