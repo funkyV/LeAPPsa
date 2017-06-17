@@ -6,15 +6,14 @@ class USER extends Model{
     }
 
     public function redirect($url){
-//      header('location: ' . URL_WITH_INDEX_FILE . $url);
-        header('location: ' . URL_PROTOCOL . URL_DOMAIN . '/' .$url);
+      header('location: ' . URL_WITH_INDEX_FILE . $url);
    }
 
    /*
     * Returneaza toate emailurile unui user
     */
-   public function getUserEmailsAndUsernames() {
-       $sql = "SELECT email, username FROM users WHERE id <> " . $_SESSION['user_session'];
+   public function getUserEmails() {
+       $sql = "SELECT email FROM users";
 
        $query = $this->db->prepare($sql);
        $query->execute();
@@ -264,6 +263,8 @@ class USER extends Model{
           $querry = $this->db->prepare($sql);
           $querry->execute(array(':id'=>$userId));
           $dataRow = $querry->fetchAll();
+          //print_r($dataRow);
+          if(!empty($dataRow)){
           $array = get_object_vars($dataRow[0]);
           for( $i=0;$i<sizeof($dataRow);$i++) {
             $array = get_object_vars($dataRow[$i]);
@@ -272,7 +273,9 @@ class USER extends Model{
                 '</h4> <label class="user-started" id="user">adresata de catre '
                 . htmlspecialchars($array['username']) . '</label> 
                 </tr> <label class="separator"></label>';
-                }        
+                }
+                return true;
+          }{echo '<h3>Ne pare rau, nu ai primit inca nicio intrebare!</h3>';}     
     }
        catch(PDOException $e)
        {
@@ -317,6 +320,7 @@ class USER extends Model{
           $querry->execute(array(':id'=>$userId));
           $dataRow = $querry->fetchAll();
           //var_dump($dataRow);
+          if(!empty($dataRow)){
           $array = get_object_vars($dataRow[0]);
           //var_dump($array);
           for( $i=0;$i<sizeof($dataRow);$i++) {
@@ -328,13 +332,16 @@ class USER extends Model{
                 . htmlspecialchars($array['userId']) . '"> '
                 . htmlspecialchars($array['username']) . '</a> !</h4> 
                 </tr> <label class="separator"></label>';
-            }        
+            }
+            return true;
+          }else {echo '<h3>Nu ai notificari noi! Pune o intrebare!</h3>';}        
     }
        catch(PDOException $e)
        {
            echo $e->getMessage();
        }
    }
+
 
 }
 ?>
