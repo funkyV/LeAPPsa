@@ -68,6 +68,10 @@ class AnsweredQuestion extends Controller {
 //        require HEADER;
 //        require APP . '/views/askSuccess.php';
 //        require FOOTER;
+        echo '<script type="text/javascript">';
+        echo 'alert("Ai dat LeAPPsa mai departe! Nu uita ca poti epuiza lista cu jucatori!");';
+        echo 'window.location.href ="' . URL_PROTOCOL . URL_DOMAIN . '/ask' . "\";";
+        echo '</script>';
     }
 
     function stringFromArray($array) {
