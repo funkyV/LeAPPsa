@@ -254,16 +254,16 @@ class USER
        }
    }
 
-   public function getAllDetailsByTable($id, $table){
+   public function getAllDetailsByTable($id){
     try
     {
-          $stmt = $this->db->prepare("SELECT * FROM ".$table." WHERE id = ".$id." LIMIT 1");
-          $stmt->execute();
-          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-          if($stmt->rowCount() > 0)
-          {
-              return $userRow[$detail];
-          }
+        $sql = ("select q.question, q.id , u.username from recipients r inner join questions q on r.question_id = q.id inner join users u on q.user_id = u.id where r.user_id = :id ");
+          $querry = $this->db->prepare($sql);
+          $querry->execute(array(':id'=>$id));
+          $dataRow = $querry->fetchAll(PDO::FETCH_ASSOC);
+          
+              return $dataRow;
+          
     }
        catch(PDOException $e)
        {

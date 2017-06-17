@@ -50,16 +50,12 @@
                                 </tr>
                             </table>
                             <?php
-                            $query="SELECT * FROM MY_TABLE";
-                            $results = mysql_query($query);
-
-                            while ($row = mysql_fetch_array($results)) {
-                                echo '<tr>';
-                                foreach($row as $field) {
-                                    echo '<td>' . htmlspecialchars($field) . '</td>';
+                            $results = $this->user->getAllDetailsByTable($this->$_SESSION['user_session']);
+                             var_dump($results);
+                                foreach($results as $data) {
+                                    echo '<tr><h4 style="color: #444;">' . htmlspecialchars($data['question']) . '</tr>';
                                 }
-                                echo '</tr>';
-                            }
+                                
                             ?>
 
                             <br/>
