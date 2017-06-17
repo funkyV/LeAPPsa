@@ -46,10 +46,10 @@ class register extends Controller
             $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
             $row=$stmt->fetch(PDO::FETCH_ASSOC);
     
-            if(strcmp($row['username'],$uname)) {
+            if($row['username']==$uname) {
                 print "sorry username already taken !";
             }
-            else if(strcmp($row['email'],$umail)) {
+            else if($row['email']==$umail) {
                 print "sorry email id already taken !";
             }
             else{

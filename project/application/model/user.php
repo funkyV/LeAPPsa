@@ -1,10 +1,8 @@
 <?php
-class USER
-{
-    private $db;
- 
-    function __construct($DB_con){
-      $this->db = $DB_con;
+class USER extends Model {
+
+    function __construct($db) {
+        parent::__construct($db);
     }
 
     public function redirect($url){
@@ -235,24 +233,6 @@ class USER
                    return false;
                 }
     }
-
-   public function whoRespond(){
-    $questionId = myQuestions();
-    try
-    {
-          $stmt = $this->db->prepare("SELECT question FROM questions WHERE id = ".$_SESSION[user_session]." ");
-          $stmt->execute();
-          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-          if($stmt->rowCount() > 0)
-          {
-              return $userRow[$detail];
-          }
-    }
-       catch(PDOException $e)
-       {
-           echo $e->getMessage();
-       }
-   }
 
    public function getAllDetailsByTable($id){
     try

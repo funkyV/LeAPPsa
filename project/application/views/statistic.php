@@ -52,6 +52,7 @@
                             <?php
                             $results = $this->user->getAllDetailsByTable($this->$_SESSION['user_session']);
                              var_dump($results);
+                             var_dump($_SESSION['user_session']);
                                 foreach($results as $data) {
                                     echo '<tr><h4 style="color: #444;">' . htmlspecialchars($data['question']) . '</tr>';
                                 }
