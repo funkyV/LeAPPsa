@@ -18,14 +18,7 @@ class Ask extends Controller {
     }
 
     public function getEmails() {
-//        $sql = "SELECT email FROM users";
-//
-//        $query = $this->db->prepare($sql);
-//        $query->execute();
-//
-//        $result = $query->fetchAll(PDO::FETCH_ASSOC);
         $user = new USER($this->db);
-
         return $user->getUserEmails();
     }
 
@@ -35,7 +28,6 @@ class Ask extends Controller {
             $this->response(' {"message" : "this is a post action"}', 400);
         } else {
             require APP . '/model/question.php';
-
 
             //prepare question parameters
             $userId = $_SESSION['user_session'];
