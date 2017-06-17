@@ -29,4 +29,15 @@ class Question extends Model {
         return $this->db->lastInsertId('questions');
     }
 
+    public function getQuestion($questionID) {
+        $sql = "SELECT * FROM questions q WHERE  q.id = :questionID";
+        $params = array(':questionID' => $questionID);
+
+        $query = $this->db->prepare($sql);
+        $query->execute($params);
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }
