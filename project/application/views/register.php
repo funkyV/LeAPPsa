@@ -9,7 +9,7 @@
         <div id="content">
           
 
-                  <form action="register/process" method="post" style="width:300px;margin:0 auto;">
+                  <form action="register/process" method="POST" style="width:300px;margin:0 auto;">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username">
                     <br/>

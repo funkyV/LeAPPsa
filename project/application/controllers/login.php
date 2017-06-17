@@ -17,7 +17,7 @@ class login extends Controller
             $umail = $_POST['email'];
             $upass = $_POST['password'];
             
-            if($this->user->login($uname,$umail,$upass)){
+            if($this->user->login($umail,$upass)){
                 $this->user->redirect('homeloged');
             }
             else{

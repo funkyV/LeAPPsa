@@ -7,33 +7,16 @@
     <div id="site_content">
 
         <div id="content">
-            <h1 class='center'>Bun venit!</h1>
+            <h1 class='center'>Aventura incepe!</h1>
             <br/>
              <div>
 
-                <div style="width:200px;margin:2px;float:left;">
-                    <div style="width:300px;margin:0 auto;">
-                        <label>Membri : 30</label>
-                        <br/>
-                        <label>Intrebari : 20</label>
-                        <br/>
-                        <label>Raspunsuri : 14</label>
-                        <br/>
-                    </div>
-                </div>
-
-                <div>
-
-                    <div style="width:500px;margin:2px;float:left;">
-                        <div style="width:300px;margin:0 auto;">
-                            <label>Ultimul membru inregistrat : florinel21</label>
-                            <br/>
-                            <label>Ultima intrebare : #215b</label>
-                            <br/>
-                            <label>Ultimul raspuns : #438c</label>
-                            <br/>
-                            <br/>
-                        </div>
+                <div style="width:800px;margin:2px;float:left;text-align: -webkit-center;">
+                        <div style="width:550px;margin:0 auto;">
+                        <h4>Fii pregatit sa dai share la cele mai originale
+                         intrebari si sa oferi raspunsuri pe masura! Intra in lumea LeAPPsa si da-ti 
+                         frau liber imaginatie!</h4>
+                         <p>Nu ezita, creaza-ti un cont acum, invita-ti prietenii si dati LeAPPsa mai departe! </p>
                     </div>
 
                 </div>

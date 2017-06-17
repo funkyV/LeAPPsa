@@ -7,9 +7,6 @@
     <body>
       <div id="site_content">
         <div id="content" style="font-size:16px;">
-          <div style="width:170px;margin:2px;float:left;">
-            <img src="img/default.png" alt="" width="100" style="border-radius:50%;margin-left:35px;border:1px solid #323232">
-          </div>
           <div style="width:370px;margin:2px;float:left;">
             <form action="editProfile/process" method="post" style="width:300px;margin:0 auto;" enctype="multipart/form-data"> 
               <label for="username">Username:</label>
@@ -23,9 +20,6 @@
               <br/>
               <label for="email">Email:</label>
               <input type="email" id="email" name="email">
-              <br/>
-              <label for="avatar">Avatar:</label>
-              <input type="file" id="avatar" name="avatar">
               <br/>
               <input type="submit" name="edit_submit" value="Update">
             </form>

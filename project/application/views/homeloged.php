@@ -11,33 +11,22 @@
             <br/>
              <div>
 
-                <div style="width:200px;margin:2px;float:left;">
-                    <div style="width:300px;margin:0 auto;">
-                        <label>Membri : 30</label>
-                        <br/>
-                        <label>Intrebari : 20</label>
-                        <br/>
-                        <label>Raspunsuri : 14</label>
-                        <br/>
-                    </div>
-                </div>
-
                 <div>
 
-                    <div style="width:500px;margin:2px;float:left;">
-                        <div style="width:300px;margin:0 auto;">
-                            <label>Ultimul membru inregistrat : florinel21</label>
-                            <br/>
-                            <label>Ultima intrebare : #215b</label>
-                            <br/>
-                            <label>Ultimul raspuns : #438c</label>
-                            <br/>
-                            <br/>
-                            <a href="logout"><input type="submit" value="Logout"></a>
+                <div style="width:800px;margin:2px;float:left;text-align: -webkit-center;">
+                        <div style="width:550px;margin:0 auto;">
+                        <h4>Pentru a porni LeAPPsa, te invitam sa accesezi pagina Ask. 
+                        Toate intrebarile noi le poti gasi in Notifications.</h4>
+                        <br/>
+                        <h4>Daca doresti sa iti schimbi informatiile, nu ezita sa accesezi 
+                        pagina Profile. Pentru a vedea progresul, pagina Statistics iti sta la dispozitie.</h4>
+
+                        <h3>Iti dorim LeAPPsa intinsa!</h3>
                         </div>
-                    </div>
 
                 </div>
+
+            </div>
 
             </div>
 

@@ -7,9 +7,6 @@
       <div id="site_content">
         <div id="content">
           <form form action="login/process" method="POST" style="width:300px;margin:0 auto;">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <br/>
             <label for="email">Email*:</label>
             <input type="email" id="email" name="email">
             <br/>
