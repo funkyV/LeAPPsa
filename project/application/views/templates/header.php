@@ -22,16 +22,16 @@
         <ul id="menu">
           <?php
           if($this->user->is_loggedin()!=""){?>
-            <li class="selected"><a href="homeloged">Home</a></li>
-            <li class="selected"><a href="about">About</a></li>
-            <li class="selected"><a href="profil">Profile</a></li>
-            <li class="selected"><a href="ask">Ask</a></li>
-            <li class="selected"><a href="statistic">Statistics</a></li>
-            <li class="selected"><a href="logout">Logout</a></li>
+            <li class="selected"><a href="/homeloged">Home</a></li>
+            <li class="selected"><a href="/about">About</a></li>
+            <li class="selected"><a href="/profil">Profile</a></li>
+            <li class="selected"><a href="/ask">Ask</a></li>
+            <li class="selected"><a href="/statistic">Statistics</a></li>
+            <li class="selected"><a href="/logout">Logout</a></li>
           <?php
          }else{?>
-         <li class="selected"><a href="home">Home</a></li>
-         <li class="selected"><a href="login">Login</a></li><?}?>
+         <li class="selected"><a href="/home">Home</a></li>
+         <li class="selected"><a href="/login">Login</a></li><?}?>
           
         </ul>
       </div>
