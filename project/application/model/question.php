@@ -14,4 +14,14 @@ class Question extends Model {
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
     }
+
+    public function addResponse($parameters) {
+        // receiver_id	question_id
+
+        $sql = "INSERT INTO notifications (receiver_id, question_id)
+                VALUES (:user_id, :question_id)";
+        
+        $query = $this->db->prepare($sql);
+        $query->execute($parameters);
+    }
 }

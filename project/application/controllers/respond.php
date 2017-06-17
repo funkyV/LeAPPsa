@@ -1,24 +1,18 @@
 <?php
 
 
-class Ask extends Controller {
-    public $emailList = null;
-    public $askedQuestion = null;
-    public $selectedEmails = null;
+class respond extends Controller {
+    public $questionList = null;
+    public $answeredQuestion = null;
+    public $selectedQuestion = null;
 
     public function __construct() {
         parent:: __construct();
-        $this->emailList = $this->getEmails();
+        $this->questionList = $this->getQuestions();
     }
 
-    public function index() {
-        require HEADER;
-        require APP . '/views/ask.php';
-        require FOOTER;
-    }
-
-    function getEmails() {
-        $sql = "SELECT email FROM users";
+    function getQuestions() {
+        $sql = "SELECT questions FROM notification where receiver_id = ".$_SESSION['user_session']."";
 
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -28,24 +22,22 @@ class Ask extends Controller {
         return $result;
     }
 
-    public function askQuestion() {
+    public function respondQuestion() {
         if ($this->get_request_method() != "POST") {
             $this->response(' {"message" : "this is a post action"}', 400);
         } else {
 
             require APP . '/model/question.php';
-            //$_SESSION['user_id'] = 12;
 
             $userId = $_SESSION['user_session'];
-            $questionType = $_POST["question_types"];
-            $this->selectedEmails = $_POST["emails"];
+            $this->selectedQuestion = $_POST["questionSelected"];
 
-            $this->askedQuestion = $_POST["question"];
-            $params =  array(':question' => $this->askedQuestion, ':user_id' => $userId, ':aDate' => date('Y-m-d H:i:s'));
+            $this->answeredQuestion = $_POST["answeredQuestion"];
+            $params =  array(':user_id' => $userId, ':question_id' => $this->answeredQuestion);
 
             $question = new Question($this->db);
-            //add the question
-            $question->addQuestion($params);
+            //respond to the question
+            $question->addResponse($params);
             $lastQuestionId = $this->db->lastInsertId();
 
             //get recipient ids

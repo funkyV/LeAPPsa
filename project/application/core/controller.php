@@ -1,5 +1,5 @@
 <?php
-require APP.'libs/user.php';
+//require APP.'model/user.php';
 class Controller extends REST {
     public $db = null;
     public $model = null;
@@ -18,9 +18,10 @@ class Controller extends REST {
     {
         //testing
         require APP . '/model/model.php';
-        $this->user = new USER($this->db);
+        require APP.'model/user.php';
         // creaza model si transmite conexiunea cu bd-u
         $this->model = new Model($this->db);
+        $this->user = new USER($this->db);
         
     }
 

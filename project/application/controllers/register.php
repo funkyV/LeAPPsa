@@ -16,22 +16,29 @@ class register extends Controller
         if(isset($_POST['submit_register'])){
         $uname = trim($_POST['username']);
         $umail = trim($_POST['email']);
-        $upass = trim($_POST['password']); 
+        $upass = trim($_POST['password']);
+        $reupass = trim($_POST['repassword']);
         
-        if($uname=="") {
+        if(empty($uname)) {
             $error[] = "provide username !"; 
         }
-        else if($umail=="") {
+        else if(empty($umail)) {
             $error[] = "provide email id !"; 
         }
         else if(!filter_var($umail, FILTER_VALIDATE_EMAIL)) {
             $error[] = 'Please enter a valid email address !';
         }
-        else if($upass=="") {
+        else if(empty($upass)) {
             $error[] = "provide password !";
+        }
+        else if(empty($reupass)) {
+            $error[] = "please repeat password !";
         }
         else if(strlen($upass) < 6){
             $error[] = "Password must be atleast 6 characters"; 
+        }
+        else if(strcmp($reupass,$upass)) {
+            $error[] = "password doesn't match !";
         }
         else{
             try{
@@ -40,13 +47,13 @@ class register extends Controller
             $row=$stmt->fetch(PDO::FETCH_ASSOC);
     
             if($row['username']==$uname) {
-                echo "sorry username already taken !";
+                print "sorry username already taken !";
             }
             else if($row['email']==$umail) {
-                echo "sorry email id already taken !";
+                print "sorry email id already taken !";
             }
             else{
-                if($this->user->register($fname,$lname,$uname,$umail,$upass)) {
+                if($this->user->register($uname,$umail,$upass)) {
                     $this->user->redirect('login');
                 }
             }

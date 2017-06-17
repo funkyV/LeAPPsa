@@ -26,7 +26,7 @@
             <li class="selected"><a href="about">About</a></li>
             <li class="selected"><a href="profil">Profile</a></li>
             <li class="selected"><a href="ask">Ask</a></li>
-            <li class="selected"><a href="index">Statistics</a></li>
+            <li class="selected"><a href="statistic">Statistics</a></li>
             <li class="selected"><a href="logout">Logout</a></li>
           <?php
          }else{?>
