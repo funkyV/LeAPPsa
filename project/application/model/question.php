@@ -24,4 +24,9 @@ class Question extends Model {
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
     }
+
+    public function lastQuestionId() {
+        return $this->db->lastInsertId('questions');
+    }
+
 }
