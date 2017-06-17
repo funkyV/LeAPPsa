@@ -21,14 +21,14 @@
 //        echo '<li>' . $anEmail . '</li>';
 //    }
     ?>
-    <form action="ask/askQuestion" method="POST" class="center" style="width:400px;margin:0 auto;">
+    <form action="/answeredQuestion/share/<?php echo ($this->question['id'])?>" method="POST" class="center" style="width:400px;margin:0 auto;">
         <br/>
         <label name = "question"> Lista cu utilizatori "liberi"</label>
         <br/>
         <br/>
-        <select style="width:300px; height:200px; text-align:center" name="emails[]" multiple>
-            <?php foreach ($this->emailList as $email) {
-                echo '<option value="' . $email['email'] . '">' . $email['email'] . '</option>';
+        <select style="width:200px; height:100px; text-align:center" name="emails[]" multiple>
+            <?php foreach ($this->emailAndUsernameList as $emailAndUsername) {
+                echo '<option value="' . $emailAndUsername['email'] . '">' . $emailAndUsername['username'] . '</option>';
             }
             ?>
         </select>

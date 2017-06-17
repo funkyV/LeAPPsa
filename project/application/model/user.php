@@ -6,14 +6,15 @@ class USER extends Model{
     }
 
     public function redirect($url){
-      header('location: ' . URL_WITH_INDEX_FILE . $url);
+//      header('location: ' . URL_WITH_INDEX_FILE . $url);
+        header('location: ' . URL_PROTOCOL . URL_DOMAIN . '/' .$url);
    }
 
    /*
     * Returneaza toate emailurile unui user
     */
-   public function getUserEmails() {
-       $sql = "SELECT email FROM users";
+   public function getUserEmailsAndUsernames() {
+       $sql = "SELECT email, username FROM users WHERE id <> " . $_SESSION['user_session'];
 
        $query = $this->db->prepare($sql);
        $query->execute();

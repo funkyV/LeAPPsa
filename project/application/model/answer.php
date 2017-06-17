@@ -15,7 +15,8 @@ class Answer extends Model {
 
         $sql = "INSERT INTO answers (id, answer, date, question_id, user_id)
                 VALUES (null, :answer, :aDate, :questionID, :userID)";
-
+//        var_dump($sql);
+//        var_dump($parameters);
         $query = $this->db->prepare($sql);
         $query->execute($parameters);
     }
