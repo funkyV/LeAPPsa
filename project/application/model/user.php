@@ -1,5 +1,5 @@
 <?php
-class USER extends Model {
+class USER extends Model{
 
     function __construct($db) {
         parent::__construct($db);
