@@ -32,8 +32,9 @@ class QuestionPage extends Controller {
 //        var_dump($this->question);
         $anAnswer = $answerModel->getAnswerForQuestion($this->question['id'], $_SESSION['user_session']);
         $this->didAnswerQuestion = 0;
-//        var_dump($anAnswer);
-        if (!is_null($anAnswer)) {
+//        var_dump( $anAnswer);
+//        var_dump(!is_null($anAnswer) && array_count_values($anAnswer) == 0);
+        if (!is_null($anAnswer) &&  !empty($anAnswer)) {
             $this->didAnswerQuestion = 1;
             header('location: ' . URL_PROTOCOL . URL_DOMAIN . '/answeredQuestion/id/' . $this->question['id']);
         } else {
