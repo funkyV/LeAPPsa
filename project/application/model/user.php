@@ -9,6 +9,31 @@ class USER extends Model{
       header('location: ' . URL_WITH_INDEX_FILE . $url);
    }
 
+   /*
+    * Returneaza toate emailurile unui user
+    */
+   public function getUserEmails() {
+       $sql = "SELECT email FROM users";
+
+       $query = $this->db->prepare($sql);
+       $query->execute();
+
+       $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+       return $result;
+   }
+
+   public function getQuestionRecipientsForEmails($emailList) {
+       $sql = 'SELECT id FROM users WHERE email in ' . $emailList;
+
+       $query = $this->db->prepare($sql);
+       $query->execute();
+
+       return $query->fetchAll(PDO::FETCH_ASSOC);
+   }
+
+
+
    public function login($uname,$umail,$upass){
        try{
           $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:uname OR email=:umail LIMIT 1");
