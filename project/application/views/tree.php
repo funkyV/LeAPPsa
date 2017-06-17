@@ -10,14 +10,14 @@
 <body style="zoom:50%; -moz-transform: scale(0.5);">
     <div style="height: 100%; width: 10000px; overflow: hidden;">
     <div class="tree">
-	<ul>
-<!--        --><?php
-                $depthVal = current($this->treeData)['depth'];
-                foreach ($this->treeData as $aNode) {
+        <!--        --><?php
+        $depthVal = current($this->treeData)['depth'];
+        foreach ($this->treeData as $aNode) {
 //                    $aDepthVal =
-                    echo '<pre>' . var_export($aNode, true) . '</pre>';
-                }
-//        ?>
+            echo '<pre>' . var_export($aNode, true) . '</pre>';
+        }
+        //        ?>
+	<ul>
 		<li>
 			<a href="#">Parent</a>
 			<ul>
