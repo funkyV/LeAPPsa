@@ -78,4 +78,4 @@ Poti face asta urmand urmatorii pasi:
 ````
 5. Apesi butonul "Create pull request"
 
-### Mult spor si doamne ajuta!
+### Mult spor si DOAMNE AJUTA!
